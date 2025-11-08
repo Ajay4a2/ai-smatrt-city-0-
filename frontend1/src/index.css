@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0f172a;
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+.leaflet-container {
+  background: #1e293b;
+  height: 100%;
+  width: 100%;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.status-critical {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+}
+
+.status-warning {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+}
+
+.status-normal {
+  background: linear-gradient(135deg, #059669, #10b981);
+}
+
+.status-info {
+  background: linear-gradient(135deg, #0369a1, #0ea5e9);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.6);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.8);
+}
+
+/* Animation for real-time updates */
+@keyframes highlight {
+  0% { background-color: rgba(34, 197, 94, 0.3); }
+  100% { background-color: transparent; }
+}
+
+.highlight-update {
+  animation: highlight 2s ease-in-out;
+}
