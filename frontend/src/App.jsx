@@ -70,7 +70,7 @@ const App = () => {
                 <span className="text-white font-bold text-lg">🏙️</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">Smart City Management System</h1>
+                <h1 className="text-xl font-bold text-white">Smart Management System</h1>
                 <p className="text-sm text-slate-300">Real-time IoT & AI-powered city operations</p>
               </div>
             </div>

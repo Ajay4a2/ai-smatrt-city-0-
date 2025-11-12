@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Forest–tortoise palette */
+/* Golden daylight palette */
 :root {
-  --bg-main: #101812;        /* deep forest background */
-  --bg-panel: #18241b;       /* darker panels */
-  --text-main: #e4e8e3;      /* soft ivory text */
-  --accent: #4f9d74;         /* jade-green accent */
-  --accent-soft: #2f503b;    /* mossy deep accent */
-  --border-light: rgba(255, 255, 255, 0.08);
+  --bg-main: #fff9e6;        /* pale butter background */
+  --bg-panel: #fff1b8;       /* warm panel */
+  --text-main: #2b1d00;      /* deep brown text */
+  --accent: #f5b301;         /* rich golden accent */
+  --accent-soft: #ffdf70;    /* lighter yellow highlight */
+  --border-light: rgba(0, 0, 0, 0.15);
 }
 
 body {
@@ -23,28 +23,28 @@ body {
   background: var(--bg-panel);
 }
 
-/* Frosted green glass look */
+/* Bright frosted glass with gold tint */
 .glass-effect {
-  background: rgba(34, 51, 39, 0.55);
-  backdrop-filter: blur(14px);
+  background: rgba(255, 248, 220, 0.6);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--border-light);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 10px rgba(160, 120, 0, 0.15);
 }
 
-/* Status gradients in tortoise tone */
+/* Status cards: contrasting yellow-based gradients */
 .status-critical {
-  background: linear-gradient(135deg, #8b2f2f, #d65a5a);
+  background: linear-gradient(135deg, #b91c1c, #f87171);
 }
 
 .status-warning {
-  background: linear-gradient(135deg, #a36a1c, #d8a85f);
+  background: linear-gradient(135deg, #d97706, #fbbf24);
 }
 
 .status-normal {
-  background: linear-gradient(135deg, #2f503b, #6fbf92);
+  background: linear-gradient(135deg, #15803d, #86efac);
 }
 
-/* Button/Tab hover & text overrides */
+/* Tab/button hover effects */
 button, a {
   transition: all 0.2s ease-in-out;
 }
@@ -53,13 +53,13 @@ button:hover, a:hover {
   color: var(--accent);
 }
 
-/* Header & nav panels — subtle translucent bronze */
+/* Header/nav styling */
 header, nav {
-  background: rgba(36, 51, 39, 0.65);
+  background: rgba(255, 247, 200, 0.7);
   border-color: var(--border-light);
 }
 
-/* Override Tailwind’s default slate/blues */
+/* Override Tailwind default slate/blues */
 .border-slate-700 {
   border-color: var(--border-light) !important;
 }
@@ -67,7 +67,7 @@ header, nav {
 .text-slate-300,
 .text-slate-400,
 .text-slate-500 {
-  color: #d1d7d0 !important;
+  color: #5b4300 !important;
 }
 
 .text-blue-400,
