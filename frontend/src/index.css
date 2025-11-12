@@ -2,43 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Forest–tortoise palette */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --bg-main: #101812;        /* deep forest background */
+  --bg-panel: #18241b;       /* darker panels */
+  --text-main: #e4e8e3;      /* soft ivory text */
+  --accent: #4f9d74;         /* jade-green accent */
+  --accent-soft: #2f503b;    /* mossy deep accent */
+  --border-light: rgba(255, 255, 255, 0.08);
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: #0f172a;
-  color: #f8fafc;
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
 }
 
+/* Leaflet/map background */
 .leaflet-container {
-  background: #1e293b;
+  background: var(--bg-panel);
 }
 
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
+/* Frosted green glass look */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(34, 51, 39, 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Status gradients in tortoise tone */
 .status-critical {
-  background: linear-gradient(135deg, #dc2626, #ef4444);
+  background: linear-gradient(135deg, #8b2f2f, #d65a5a);
 }
 
 .status-warning {
-  background: linear-gradient(135deg, #d97706, #f59e0b);
+  background: linear-gradient(135deg, #a36a1c, #d8a85f);
 }
 
 .status-normal {
-  background: linear-gradient(135deg, #059669, #10b981);
+  background: linear-gradient(135deg, #2f503b, #6fbf92);
 }
+
+/* Button/Tab hover & text overrides */
+button, a {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover, a:hover {
+  color: var(--accent);
+}
+
+/* Header & nav panels — subtle translucent bronze */
+header, nav {
+  background: rgba(36, 51, 39, 0.65);
+  border-color: var(--border-light);
+}
+
+/* Override Tailwind’s default slate/blues */
+.border-slate-700 {
+  border-color: var(--border-light) !important;
+}
+
+.text-slate-300,
+.text-slate-400,
+.text-slate-500 {
+  color: #d1d7d0 !important;
+}
+
+.text-blue-400,
+.border-blue-500 {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
