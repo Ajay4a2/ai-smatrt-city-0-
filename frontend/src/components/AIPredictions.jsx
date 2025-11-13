@@ -9,28 +9,28 @@ const AIPredictions = () => {
     // Mock AI predictions data
     setPredictions({
       traffic: {
-        prediction: 'Heavy congestion expected in downtown area during evening rush hour',
+        prediction: 'High congestion anticipated in downtown zones during peak evening hours',
         confidence: 87,
         impact: 'HIGH',
-        recommendation: 'Deploy additional traffic control units and adjust traffic light timing'
+        recommendation: 'Deploy extra traffic controllers and adjust signal timings'
       },
       security: {
-        prediction: 'Low risk of security incidents in commercial districts',
+        prediction: 'Minimal risk of safety incidents in commercial sectors',
         confidence: 92,
         impact: 'LOW',
-        recommendation: 'Maintain current security patrol levels'
+        recommendation: 'Maintain current patrol coverage'
       },
       utilities: {
-        prediction: 'Increased power consumption expected due to temperature drop',
+        prediction: 'Rising energy demand expected due to temperature decline',
         confidence: 78,
         impact: 'MEDIUM',
-        recommendation: 'Prepare backup power systems and optimize grid distribution'
+        recommendation: 'Activate standby power and balance grid load'
       },
       emergency: {
-        prediction: 'Higher probability of emergency calls in residential areas',
+        prediction: 'Slight uptick in emergency calls projected in residential districts',
         confidence: 81,
         impact: 'MEDIUM',
-        recommendation: 'Pre-position emergency response teams in key locations'
+        recommendation: 'Stage response units strategically for rapid deployment'
       }
     });
   }, []);
@@ -39,7 +39,6 @@ const AIPredictions = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      // In real implementation, this would call the backend API
     }, 2000);
   };
 
@@ -59,8 +58,8 @@ const AIPredictions = () => {
           <div className="flex items-center space-x-3">
             <Brain className="w-8 h-8 text-purple-400" />
             <div>
-              <h2 className="text-xl font-bold text-white">AI-Powered Predictions</h2>
-              <p className="text-slate-400">Machine learning insights for proactive city management</p>
+              <h2 className="text-xl font-bold text-white">AI Forecasts & Insights</h2>
+              <p className="text-slate-400">Predictive intelligence for proactive urban operations</p>
             </div>
           </div>
           <button
@@ -68,7 +67,7 @@ const AIPredictions = () => {
             disabled={loading}
             className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-medium disabled:opacity-50 transition-colors"
           >
-            {loading ? 'Analyzing...' : 'Run Analysis'}
+            {loading ? 'Processing...' : 'Run Forecast'}
           </button>
         </div>
 
@@ -77,7 +76,7 @@ const AIPredictions = () => {
           <div className="glass-effect rounded-lg p-4 border border-slate-700">
             <div className="flex items-center space-x-2 mb-3">
               <TrendingUp className="w-5 h-5 text-blue-400" />
-              <h3 className="text-lg font-semibold text-white">Traffic Patterns</h3>
+              <h3 className="text-lg font-semibold text-white">Traffic Outlook</h3>
             </div>
             {predictions.traffic && (
               <div className="space-y-3">
@@ -103,7 +102,7 @@ const AIPredictions = () => {
           <div className="glass-effect rounded-lg p-4 border border-slate-700">
             <div className="flex items-center space-x-2 mb-3">
               <Shield className="w-5 h-5 text-green-400" />
-              <h3 className="text-lg font-semibold text-white">Security Risk</h3>
+              <h3 className="text-lg font-semibold text-white">Safety Forecast</h3>
             </div>
             {predictions.security && (
               <div className="space-y-3">
@@ -129,7 +128,7 @@ const AIPredictions = () => {
           <div className="glass-effect rounded-lg p-4 border border-slate-700">
             <div className="flex items-center space-x-2 mb-3">
               <Zap className="w-5 h-5 text-yellow-400" />
-              <h3 className="text-lg font-semibold text-white">Utilities Demand</h3>
+              <h3 className="text-lg font-semibold text-white">Energy & Utilities</h3>
             </div>
             {predictions.utilities && (
               <div className="space-y-3">
@@ -155,7 +154,7 @@ const AIPredictions = () => {
           <div className="glass-effect rounded-lg p-4 border border-slate-700">
             <div className="flex items-center space-x-2 mb-3">
               <AlertTriangle className="w-5 h-5 text-red-400" />
-              <h3 className="text-lg font-semibold text-white">Emergency Services</h3>
+              <h3 className="text-lg font-semibold text-white">Emergency Outlook</h3>
             </div>
             {predictions.emergency && (
               <div className="space-y-3">
@@ -181,13 +180,13 @@ const AIPredictions = () => {
 
       {/* Model Performance */}
       <div className="glass-effect rounded-xl p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">AI Model Performance</h3>
+        <h3 className="text-lg font-semibold text-white mb-4">AI Model Performance Metrics</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { name: 'Traffic Model', accuracy: 94.2, latency: '47ms' },
-            { name: 'Security Model', accuracy: 96.8, latency: '52ms' },
-            { name: 'Utilities Model', accuracy: 91.5, latency: '38ms' },
-            { name: 'Emergency Model', accuracy: 89.7, latency: '61ms' }
+            { name: 'Traffic Forecast Model', accuracy: 94.2, latency: '47ms' },
+            { name: 'Safety Analysis Model', accuracy: 96.8, latency: '52ms' },
+            { name: 'Utility Load Model', accuracy: 91.5, latency: '38ms' },
+            { name: 'Emergency Prediction Model', accuracy: 89.7, latency: '61ms' }
           ].map((model, index) => (
             <div key={index} className="text-center p-4 rounded-lg bg-slate-800/50">
               <p className="text-white font-medium">{model.name}</p>
