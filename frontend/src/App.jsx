@@ -47,10 +47,10 @@ const App = () => {
 
   const tabs = [
     { id: 'dashboard', name: 'Dashboard', icon: '📊' },
-    { id: 'map', name: 'Operations Map', icon: '🗺️' },
-    { id: 'traffic', name: 'Traffic Monitor', icon: '🚦' },
-    { id: 'ai', name: 'AI Predictions', icon: '🤖' },
-    { id: 'health', name: 'System Health', icon: '❤️' }
+    { id: 'map', name: 'Field Map', icon: '🗺️' },
+    { id: 'traffic', name: 'Traffic Control', icon: '🚦' },
+    { id: 'ai', name: 'Predictive Analytics', icon: '🤖' },
+    { id: 'health', name: 'Infrastructure Health', icon: '❤️' }
   ];
 
   const renderContent = () => {
@@ -81,15 +81,15 @@ const App = () => {
                 <span className="text-white font-bold text-lg">🏙️</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold">Smart Management System</h1>
-                <p className="text-sm opacity-80">Real-time IoT & AI-powered city operations</p>
+                <h1 className="text-xl font-bold">Urban Command Center</h1>
+                <p className="text-sm opacity-80">AI-Enabled Smart-City Control</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2 text-sm">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span>Live</span>
+                <span>Real-Time Mode</span>
               </div>
               <div className="text-sm opacity-80">
                 {new Date().toLocaleTimeString()}
@@ -101,7 +101,7 @@ const App = () => {
                 className="ml-4 px-3 py-2 rounded-md border border-gray-400 text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition"
                 title="Toggle Theme"
               >
-                {isDarkMode ? '🌞 Day' : '🌙 Night'}
+                {isDarkMode ? '🌞 Light' : '🌙 Dark'}
               </button>
             </div>
           </div>
