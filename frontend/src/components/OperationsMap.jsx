@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, CircleMarker } from 'react-leaflet';
+import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -19,12 +19,12 @@ const OperationsMap = ({ realTimeData }) => {
     const mockOperations = [
       {
         id: 1,
-        type: 'TRAFFIC',
-        location: 'Highway I-95',
+        type: 'TRANSIT',
+        location: 'I-95 Expressway',
         severity: 5,
         lat: 40.7128,
         lng: -74.0060,
-        description: 'Major accident with injuries'
+        description: 'Severe collision — multiple lane closure'
       },
       {
         id: 2,
@@ -33,25 +33,25 @@ const OperationsMap = ({ realTimeData }) => {
         severity: 3,
         lat: 40.7829,
         lng: -73.9654,
-        description: 'Security patrol increased'
+        description: 'Increased security patrol in progress'
       },
       {
         id: 3,
         type: 'UTILITY',
-        location: 'Downtown',
+        location: 'Downtown Core',
         severity: 2,
         lat: 40.7589,
         lng: -73.9851,
-        description: 'Power maintenance scheduled'
+        description: 'Scheduled grid maintenance underway'
       },
       {
         id: 4,
         type: 'EMERGENCY',
-        location: 'Main Hospital',
+        location: 'Metro General Hospital',
         severity: 5,
         lat: 40.7411,
         lng: -73.9897,
-        description: 'Ambulance dispatch required'
+        description: 'Ambulance dispatch initiated'
       }
     ];
     setOperations(mockOperations);
@@ -67,12 +67,12 @@ const OperationsMap = ({ realTimeData }) => {
 
   return (
     <div className="glass-effect rounded-xl p-6">
-      <h2 className="text-xl font-bold text-white mb-4">City Operations Map</h2>
+      <h2 className="text-xl font-bold text-white mb-4">Operational Overview Map</h2>
       <div className="h-96 rounded-lg overflow-hidden">
         <MapContainer center={center} zoom={12} style={{ height: '100%', width: '100%' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           />
           {operations.map(op => (
             <CircleMarker
@@ -87,14 +87,14 @@ const OperationsMap = ({ realTimeData }) => {
             >
               <Popup>
                 <div className="p-2">
-                  <h3 className="font-bold">{op.type} Alert</h3>
+                  <h3 className="font-bold">{op.type} Event</h3>
                   <p className="text-sm">{op.location}</p>
                   <p className="text-sm mt-1">{op.description}</p>
                   <p className={`text-sm font-semibold mt-1 ${
                     op.severity >= 4 ? 'text-red-600' : 
                     op.severity >= 3 ? 'text-orange-600' : 'text-green-600'
                   }`}>
-                    Severity: {op.severity}/5
+                    Severity Level: {op.severity}/5
                   </p>
                 </div>
               </Popup>
@@ -106,18 +106,18 @@ const OperationsMap = ({ realTimeData }) => {
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-          <span className="text-sm text-slate-300">Critical (4-5)</span>
+          <span className="text-sm text-slate-300">Critical (4–5)</span>
         </div>
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-          <span className="text-sm text-slate-300">Warning (3)</span>
+          <span className="text-sm text-slate-300">Caution (3)</span>
         </div>
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-          <span className="text-sm text-slate-300">Normal (1-2)</span>
+          <span className="text-sm text-slate-300">Stable (1–2)</span>
         </div>
         <div className="text-sm text-slate-400">
-          {operations.length} Active Operations
+          {operations.length} Active Events
         </div>
       </div>
     </div>
