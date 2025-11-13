@@ -6,14 +6,14 @@ const SystemHealth = ({ realTimeData }) => {
   const [metrics, setMetrics] = useState({});
 
   useEffect(() => {
-    // Mock systems data
+    // Mock system data
     setSystems([
-      { name: 'AI Service', status: 'operational', latency: '47ms', uptime: '99.98%' },
-      { name: 'Database Cluster', status: 'operational', latency: '12ms', uptime: '99.99%' },
-      { name: 'IoT Gateway', status: 'degraded', latency: '156ms', uptime: '98.45%' },
+      { name: 'AI Engine', status: 'operational', latency: '47ms', uptime: '99.98%' },
+      { name: 'Data Cluster', status: 'operational', latency: '12ms', uptime: '99.99%' },
+      { name: 'IoT Hub', status: 'degraded', latency: '156ms', uptime: '98.45%' },
       { name: 'API Gateway', status: 'operational', latency: '23ms', uptime: '99.95%' },
-      { name: 'Message Queue', status: 'operational', latency: '8ms', uptime: '99.97%' },
-      { name: 'Cache Layer', status: 'operational', latency: '2ms', uptime: '99.99%' }
+      { name: 'Message Broker', status: 'operational', latency: '8ms', uptime: '99.97%' },
+      { name: 'Cache Service', status: 'operational', latency: '2ms', uptime: '99.99%' }
     ]);
 
     // Mock metrics
@@ -57,7 +57,7 @@ const SystemHealth = ({ realTimeData }) => {
     <div className="space-y-6">
       {/* System Status Grid */}
       <div className="glass-effect rounded-xl p-6">
-        <h2 className="text-xl font-bold text-white mb-6">System Health Status</h2>
+        <h2 className="text-xl font-bold text-white mb-6">Infrastructure Health Overview</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {systems.map((system, index) => (
             <div key={index} className="p-4 rounded-lg bg-slate-800/50 border border-slate-700">
@@ -88,13 +88,13 @@ const SystemHealth = ({ realTimeData }) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Resource Usage */}
         <div className="glass-effect rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-6">Resource Usage</h3>
+          <h3 className="text-lg font-semibold text-white mb-6">Resource Utilization</h3>
           <div className="space-y-4">
             {[
-              { name: 'CPU Usage', value: metrics.cpu, icon: Cpu, color: 'blue' },
+              { name: 'CPU Load', value: metrics.cpu, icon: Cpu, color: 'blue' },
               { name: 'Memory Usage', value: metrics.memory, icon: Database, color: 'green' },
               { name: 'Storage Usage', value: metrics.storage, icon: Server, color: 'purple' },
-              { name: 'Network I/O', value: 75, icon: Wifi, color: 'orange' }
+              { name: 'Network Load', value: 75, icon: Wifi, color: 'orange' }
             ].map((resource, index) => {
               const Icon = resource.icon;
               return (
@@ -120,15 +120,15 @@ const SystemHealth = ({ realTimeData }) => {
 
         {/* System Metrics */}
         <div className="glass-effect rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-6">Real-time Metrics</h3>
+          <h3 className="text-lg font-semibold text-white mb-6">Operational Metrics</h3>
           <div className="space-y-4">
             {[
               { label: 'Active Connections', value: metrics.activeConnections, change: '+12%' },
               { label: 'Data Throughput', value: metrics.dataThroughput, change: '+5.2%' },
-              { label: 'API Requests/min', value: '12.4k', change: '+8.7%' },
+              { label: 'API Requests / min', value: '12.4k', change: '+8.7%' },
               { label: 'Error Rate', value: '0.12%', change: '-0.03%' },
-              { label: 'Response Time', value: '87ms', change: '-12ms' },
-              { label: 'IoT Devices', value: '2,847', change: '+23' }
+              { label: 'Average Response Time', value: '87ms', change: '-12ms' },
+              { label: 'Connected IoT Devices', value: '2,847', change: '+23' }
             ].map((metric, index) => (
               <div key={index} className="flex items-center justify-between py-2 border-b border-slate-700 last:border-0">
                 <span className="text-slate-300">{metric.label}</span>
@@ -149,26 +149,26 @@ const SystemHealth = ({ realTimeData }) => {
 
       {/* Recent Incidents */}
       <div className="glass-effect rounded-xl p-6">
-        <h3 className="text-lg font-semibold text-white mb-6">Recent Incidents</h3>
+        <h3 className="text-lg font-semibold text-white mb-6">Recent System Events</h3>
         <div className="space-y-3">
           {[
             { 
-              service: 'IoT Gateway', 
+              service: 'IoT Hub', 
               issue: 'High latency detected', 
               status: 'Resolved', 
               time: '2 hours ago',
               duration: '15 minutes'
             },
             { 
-              service: 'Database Cluster', 
-              issue: 'Connection pool exhausted', 
+              service: 'Data Cluster', 
+              issue: 'Connection pool saturation', 
               status: 'Investigating', 
               time: '45 minutes ago',
               duration: 'Ongoing'
             },
             { 
-              service: 'Cache Layer', 
-              issue: 'Memory pressure', 
+              service: 'Cache Service', 
+              issue: 'Memory threshold exceeded', 
               status: 'Resolved', 
               time: '6 hours ago',
               duration: '8 minutes'
