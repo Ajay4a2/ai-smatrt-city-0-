@@ -10,6 +10,7 @@ const App = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [realTimeData, setRealTimeData] = useState({});
   const [socket, setSocket] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(true); // 🌗 New state for theme toggle
 
   useEffect(() => {
     const newSocket = io('http://localhost:8080');
@@ -33,6 +34,16 @@ const App = () => {
 
     return () => newSocket.close();
   }, []);
+
+  // 🌗 Apply theme class to <html> tag
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDarkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
   const tabs = [
     { id: 'dashboard', name: 'Dashboard', icon: '📊' },
@@ -60,29 +71,38 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen transition-colors duration-300 bg-main text-main">
       {/* Header */}
       <header className="glass-effect border-b border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-gray-700 to-gray-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">🏙️</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">Smart Management System</h1>
-                <p className="text-sm text-slate-300">Real-time IoT & AI-powered city operations</p>
+                <h1 className="text-xl font-bold">Smart Management System</h1>
+                <p className="text-sm opacity-80">Real-time IoT & AI-powered city operations</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2 text-sm">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-slate-300">Live</span>
+                <span>Live</span>
               </div>
-              <div className="text-sm text-slate-300">
+              <div className="text-sm opacity-80">
                 {new Date().toLocaleTimeString()}
               </div>
+
+              {/* 🌗 Day/Night Toggle Button */}
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className="ml-4 px-3 py-2 rounded-md border border-gray-400 text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+                title="Toggle Theme"
+              >
+                {isDarkMode ? '🌞 Day' : '🌙 Night'}
+              </button>
             </div>
           </div>
         </div>
@@ -98,8 +118,8 @@ const App = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center space-x-2 py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
                   activeTab === tab.id
-                    ? 'border-blue-500 text-blue-400'
-                    : 'border-transparent text-slate-400 hover:text-slate-300'
+                    ? 'border-gray-900 dark:border-gray-100 text-gray-900 dark:text-gray-100'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
                 }`}
               >
                 <span>{tab.name}</span>
