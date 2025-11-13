@@ -102,7 +102,6 @@ const App = () => {
                     : 'border-transparent text-slate-400 hover:text-slate-300'
                 }`}
               >
-                <span>{tab.icon}</span>
                 <span>{tab.name}</span>
               </button>
             ))}
