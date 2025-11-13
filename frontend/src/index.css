@@ -2,72 +2,142 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Golden daylight palette */
+/* =========================================================
+   THEME VARIABLES
+   ========================================================= */
+
+/* ---- Day Mode (default) ---- */
 :root {
-  --bg-main: #fff9e6;        /* pale butter background */
-  --bg-panel: #fff1b8;       /* warm panel */
-  --text-main: #2b1d00;      /* deep brown text */
-  --accent: #f5b301;         /* rich golden accent */
-  --accent-soft: #ffdf70;    /* lighter yellow highlight */
-  --border-light: rgba(0, 0, 0, 0.15);
+  --bg-main: #f7f7f7;        /* soft light gray background */
+  --bg-panel: #ffffff;       /* white card/panel */
+  --text-main: #1a1a1a;      /* near-black text */
+  --accent: #333333;         /* dark gray accent */
+  --accent-soft: #666666;    /* medium gray highlight */
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.2);
+  --shadow: rgba(0, 0, 0, 0.08);
 }
 
+/* ---- Night Mode ---- */
+.dark {
+  --bg-main: #111111;        /* deep charcoal background */
+  --bg-panel: #1b1b1b;       /* slightly lighter panel */
+  --text-main: #f2f2f2;      /* soft white text */
+  --accent: #d9d9d9;         /* light gray accent */
+  --accent-soft: #aaaaaa;    /* mid-gray for hover */
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.25);
+  --shadow: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================================
+   GLOBAL STYLES
+   ========================================================= */
 body {
   background: var(--bg-main);
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+.bg-main {
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* Panels, cards, modals, etc. */
+.bg-panel {
+  background: var(--bg-panel);
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+}
+
+/* =========================================================
+   SPECIAL ELEMENTS
+   ========================================================= */
 
 /* Leaflet/map background */
 .leaflet-container {
   background: var(--bg-panel);
 }
 
-/* Bright frosted glass with gold tint */
+/* Glass effect panels */
 .glass-effect {
-  background: rgba(255, 248, 220, 0.6);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-light);
-  box-shadow: 0 3px 10px rgba(160, 120, 0, 0.15);
+  box-shadow: 0 3px 10px var(--shadow);
+  transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+.dark .glass-effect {
+  background: rgba(30, 30, 30, 0.6);
 }
 
-/* Status cards: contrasting yellow-based gradients */
+/* Status cards */
 .status-critical {
-  background: linear-gradient(135deg, #b91c1c, #f87171);
+  background: linear-gradient(135deg, #2e2e2e, #5c5c5c);
+  color: #fff;
+}
+.dark .status-critical {
+  background: linear-gradient(135deg, #8b0000, #b22222);
+  color: #fff;
 }
 
 .status-warning {
-  background: linear-gradient(135deg, #d97706, #fbbf24);
+  background: linear-gradient(135deg, #5a5a5a, #a1a1a1);
+  color: #fff;
+}
+.dark .status-warning {
+  background: linear-gradient(135deg, #aa8500, #ffcc00);
+  color: #111;
 }
 
 .status-normal {
-  background: linear-gradient(135deg, #15803d, #86efac);
+  background: linear-gradient(135deg, #d9d9d9, #f2f2f2);
+  color: #111;
+}
+.dark .status-normal {
+  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+  color: #eee;
 }
 
-/* Tab/button hover effects */
+/* =========================================================
+   NAVIGATION + HEADER
+   ========================================================= */
+
+header, nav {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: var(--border-light);
+  box-shadow: 0 1px 4px var(--shadow);
+  transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+.dark header,
+.dark nav {
+  background: rgba(20, 20, 20, 0.85);
+}
+
+/* Toggle button hover and focus */
 button, a {
   transition: all 0.2s ease-in-out;
+  color: var(--text-main);
 }
 
 button:hover, a:hover {
   color: var(--accent);
 }
 
-/* Header/nav styling */
-header, nav {
-  background: rgba(255, 247, 200, 0.7);
-  border-color: var(--border-light);
-}
+/* =========================================================
+   TAILWIND COLOR OVERRIDES
+   ========================================================= */
 
-/* Override Tailwind default slate/blues */
 .border-slate-700 {
-  border-color: var(--border-light) !important;
+  border-color: var(--border-strong) !important;
 }
 
 .text-slate-300,
 .text-slate-400,
 .text-slate-500 {
-  color: #5b4300 !important;
+  color: var(--accent-soft) !important;
 }
 
 .text-blue-400,
@@ -75,4 +145,3 @@ header, nav {
   color: var(--accent) !important;
   border-color: var(--accent) !important;
 }
-
